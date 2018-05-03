@@ -20,6 +20,8 @@ cd logs
 man -M ServerRoot/man/logresolve.8
 
 //
+man -M ServerRoot/man rotatelogs.8
+
 
 
 
