@@ -17,6 +17,9 @@ cd logs
 ../bin/split-logfile < access_log.old
 
 //
+man -M ServerRoot/man/logresolve.8
+
+//
 
 
 
