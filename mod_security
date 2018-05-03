@@ -1,0 +1,6 @@
+SecAuditLogType Concurrent
+SecAuditLogStorageDir /var/www/audit_log/data/
+SecAuditLog /var/www/audit_log/index
+SecAuditLogParts ABCFHZ
+
+
