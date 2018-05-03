@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+
+my $L = '/usr/local/apache/logs';
+
+my %is_open = (); 
+$|=1;
+open(F, ">>$L/access_log");
+
+while(my $log = <STDIN>){
+  if($log =~ m!\s/~(.*?)/!){
+    my $u = $1;
+    unless ($is_open{$u}){
+      my $fh;
+      open $fh, '>>' . $L '/' . $u;
+      $is_open{$u} = $fh;
+    }
+    select ($is_open{$u});
+    $|=1;
+    print $log;
+  }
+  else {
+    select F;
+    $|=1;
+    print F $log;
+  }
+}
+
+close F;
+foreach my $h (keys %is_open){
+  close $h;
+}
+
+RewriteRule ^/~([^/]+)/ ~ [E=userdir:$1]
+LogFormat "%{userdir}e %h %l %u %t \"%r\" %>s %b" common
+
+
+
+
+

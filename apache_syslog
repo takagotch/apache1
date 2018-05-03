@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+use Sys::Syslog qw( :DEFAULT setlogsock );
+
+setlogsock('unix');
+openlog('apache', 'conns', 'pid', 'user');
+
+while($log = <STDIN>){
+  syslog('notice', $log);
+}
+
+closelog;
+
+
