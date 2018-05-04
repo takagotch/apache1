@@ -115,4 +115,7 @@ htpasswd -D user.pass waldo
 egrep -v '^waldo:' user.pass >!user.pass
 
 
+htdigest -c "By invitation only" rbowen
+htdigest "By invitation only" krietz
+
 
