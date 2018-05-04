@@ -103,5 +103,8 @@ mkdir mod_security
 cd mod_security
 tar xzf /tmp/modsecurity-core-rules_2.1-1.4.tar.gz
 
+perl -MCPAN -e shell
+install Apache::AuthExpire
+
 
 
