@@ -3,7 +3,7 @@ use Apache::Htpasswd::Perishable;
 
 my $password_file = '/usr/loca/apache/passwords/user.pass';
 
-open() or die "";
+open(F,$password_file) or die "Could not open password file.";
 my@users;
 while(){}
 close F;
