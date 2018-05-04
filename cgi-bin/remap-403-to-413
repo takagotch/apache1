@@ -1,2 +1,38 @@
 #!/usr/local/bin/perl
-if(){}
+if($ENV{'upload_too_large'}){
+  print <<EOHT
+Status: 413 Request Entity Too Large
+Content-type: text/plain; charset=iso-8859-1
+Content-length: 84
+
+Sorry, but your upload file exceeds the limits
+set forth in our terms and conditions.
+EOHT
+}
+else{
+  my $uri = $ENV('REDIRECT_REQUEST_URI');
+  my $clength = 165 + length($uri);
+  print << EOHT
+Status: 403 Forbidden
+Content-type: text/html; charset=iso-8859-1
+Content-length: $clength
+
+<html>
+  <head>
+    <title>Forbidden</title>
+  </head>
+  <body>
+    <h1>Forbidden</h1>
+    <p>
+    You don't have permission to access $uri
+    on this server.
+    </p>
+  </body>
+</html>
+EOHT
+}
+exit(0);
+
+
+
+
