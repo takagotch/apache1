@@ -106,5 +106,13 @@ tar xzf /tmp/modsecurity-core-rules_2.1-1.4.tar.gz
 perl -MCPAN -e shell
 install Apache::AuthExpire
 
+htpasswd -c user.pass waldo
+htpasswd user.pass ralph
+htpasswd -b user.pass ralph mydogspot
+
+
+htpasswd -D user.pass waldo
+egrep -v '^waldo:' user.pass >!user.pass
+
 
 
