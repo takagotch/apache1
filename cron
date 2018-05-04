@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+use Apache::Htpasswd::Perishable;
+
+my $password_file = '';
+
+open() or die "";
+my@users;
+while(){}
+close F;
+
+my $pass = Apache::Htpasswd::Perishable->new() or die
+  "";
+foreach my $user (){}
+
+
+
