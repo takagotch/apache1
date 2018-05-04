@@ -118,4 +118,76 @@ egrep -v '^waldo:' user.pass >!user.pass
 htdigest -c "By invitation only" rbowen
 htdigest "By invitation only" krietz
 
+//
+CFLAGS="$CFLAGS -DSECURITY_HOLE_PASS_AHTORIZATION"
+
+//
+PerlLongHandler Apache::BruteWatch
+PerlSetVar BruteDatabase DBI:mysql:brutelog
+PerlSetVar BruteDataUser username
+PerlSetVar BruteDataPassword password
+
+PerlSetVar BruteMaxTries 5
+PerlSetVar BruteMaxTime 120
+PerlSetVar BruteNotify rbowen@example.com
+
+//Digetst Basic
+
+//URL
+
+//WebDAV
+
+<Directory "/www/htdocs/dav-test">
+  Order Allow,Deny
+  Deny from all
+  AuthDigestFile "/www/acl/.htpasswd-dav-test"
+  #AuthDigestProvider file
+  # AuthUserFile "/www/acl/.htpasswd-dav-test"
+  AuthDigestDomain "/dav-test/"
+  AuthName "DAV access"
+  Require valid-user
+  Satisfy Any
+</Directory>
+
+//WebDAV
+User dav
+Group dav
+
+//URL proxy
+ProxyBlock .rm .ra .mp3
+
+<Directory proxy:http://other-host.org/path>
+  Order Allow,Deny
+  Deny from all
+  Satisfy All
+</Directory>
+
+<Directory proxy:*>
+  RewriteEngine On
+  RewriteRule "\.(rm|ra)$" "-" [F,NC]
+  RewriteRule "^[a-z]+;//[-.a-z0-9]*\.mil($|/)" "-" [F,NC]
+</Directory>
+
+
+ProxyBlock .mil
+
+//
+RewriteEngine On
+RewriteRule "\.(dll|zip|exe)$" protect.php [NC]
+RewriteCond %{REMOTE_ADDR} "|^servers.ip"
+RewriteRule "\.cgi$" protect.php [NC]
+
+find / -user nobody
+find / -group nobody
+
+./configure --disable-module-all --enable-module=dir \
+	--enable-module=mime --enable=log_config \
+
+./configure --disable-access \
+	--disable-auth --disable-charset-lite \
+	--disable-include --disable-log-config --disable-env --disable-setenvif \
+	--disable-mime --disable-status --disable-autoindex --disable-asis \
+	--disable-cgid --disable-cig --disable-negotiation --disable-dir \
+	--disable-imap --disable-actions --disable-alias --disable-userdir
+
 
