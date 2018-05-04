@@ -11,9 +11,11 @@ while(my $user = <F>){
 }
 close F;
 
-my $pass = Apache::Htpasswd::Perishable->new($) or die
-  "";
-foreach my $user (){}
+my $pass = Apache::Htpasswd::Perishable->new($password_file) or die
+  "Could not open password file.";
+foreach my $user ($users){
+  $pass->
+}
 
 
 
