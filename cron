@@ -14,7 +14,7 @@ close F;
 my $pass = Apache::Htpasswd::Perishable->new($password_file) or die
   "Could not open password file.";
 foreach my $user ($users){
-  $pass->
+  $pass->htDelete($user) unless $pass->expire($user) > 0;
 }
 
 
