@@ -1,0 +1,22 @@
+LoadModule authz_svn_module modules/mod_authz_svn.so
+
+<Location "/repos">
+  DAV svn
+  SVNParentPath "/repository/subversion"
+  Order Deny,Allow
+  Allow from all
+  AuthName "Log in for write access"
+  AuthType Digest
+  AuthDigestDomain "/repos/"
+  AuthDigestFile "/path/to/digest-file"
+  AuthzSVWAccessFile "/path/to/access-file"
+  <Limit GET PROPFIND OPTIONS REPORT>
+    Satisfy Any
+  </Limit>
+  <LimitExcept GET PROPFIND OPTIONS REPORT>
+    Satisfy All
+    Require valid-user
+  </LimitExcept>
+</Location>
+
+

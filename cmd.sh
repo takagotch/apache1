@@ -190,4 +190,29 @@ find / -group nobody
 	--disable-cgid --disable-cig --disable-negotiation --disable-dir \
 	--disable-imap --disable-actions --disable-alias --disable-userdir
 
+//
+openssl genrsa -out server.key 1024
+openssl req -new -key server.key -out server.csr
+cp server.key server.key.org
+openssl rsa -in server.key.org -out server.key
+openssl x509 -req -days 365 -in server.csr -signkey server.key server.crt
+
+SSLCertificateFile "/www/conf/server.crt"
+SSL CertificateKeyFile "/www/conf/server.key"
+
+EX
+CO
+Example City
+Institude of Examples
+Demonstration Services
+www.example.com
+big-cheese@example.com
+
+CA.pl -newca
+CA.pl -newreq
+CA.pl -signreq
+CA.pl -pkcs12
+
+openssl x509 -in demoCA/cacert.pen -out cacert.crt -outform DER
+
 
