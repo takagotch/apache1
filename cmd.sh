@@ -81,6 +81,15 @@ make install
 copy php.ini-dist %SYSTEMROOT%\php.ini
 copy php4ts.dll %SYSTEMROOT%
 
+cd mod_ssl-2.8.14-1.3.27
+./configure \
+	--with-apache=../apache_1.3.27 \
+	--with-ssl=SYSTEM \
+	--perfix=/usr/local/apache
+cd ../apache_1.3.27
+make
+make certificate
+
 
 
 
