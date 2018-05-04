@@ -72,4 +72,12 @@ perl Makefile.PL MP_APXS=/usr/local/apache2/bin/apxs
 cd ServerRoot
 mkdir lib lib/perl lib/perl/Apache
 
+cd php-5.2.3
+./configure \
+	--with-apxs2=/usr/local/apache/bin/apxs
+make
+make install
+
+
+
 
