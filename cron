@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use Apache::Htpasswd::Perishable;
 
-my $password_file = '';
+my $password_file = '/usr/loca/apache/passwords/user.pass';
 
 open() or die "";
 my@users;
