@@ -78,6 +78,9 @@ cd php-5.2.3
 make
 make install
 
+copy php.ini-dist %SYSTEMROOT%\php.ini
+copy php4ts.dll %SYSTEMROOT%
+
 
 
 
