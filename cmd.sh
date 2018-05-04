@@ -91,5 +91,17 @@ make
 make certificate
 
 
+cd /usr/local/build
+tar xzf /tmp/modsecurity-apache_2.1.1.tar.gz
+
+cd /usr/local/build/modsecurity-apache_2.1.1/apache2
+make top_dir=/usr/local/apache2
+make top_dir=/usr/local/apache2 install
+
+cd /usr/local/apache2/conf
+mkdir mod_security
+cd mod_security
+tar xzf /tmp/modsecurity-core-rules_2.1-1.4.tar.gz
+
 
 
