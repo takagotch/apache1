@@ -59,6 +59,17 @@ cd \Apache
 mkdir var
 mkdir htdocs\dav-test
 
+perl Makefile.PL \
+	  USE APKS=1
+	  WITH_APXS=/usr/local/apache/bin/apxs \
+	  EVERTHING=1 \
+	  PERL_USELARGEFILES=0
+make
+make install
 
+perl Makefile.PL MP_APXS=/usr/local/apache2/bin/apxs
+
+cd ServerRoot
+mkdir lib lib/perl lib/perl/Apache
 
 
