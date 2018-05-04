@@ -1,0 +1,10 @@
+<Directory "/home">
+  AuthType Basic
+  AuthName HomeDir
+  AuthUserFile /etc/passwd
+  Require valid-user
+  Satisfy All
+</Direcotry>
+
+
+
