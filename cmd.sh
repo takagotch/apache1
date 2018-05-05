@@ -216,3 +216,7 @@ CA.pl -pkcs12
 openssl x509 -in demoCA/cacert.pen -out cacert.crt -outform DER
 
 
+chmod a+x /usr/local/apache/cgi-bin/example.cgi
+which perl
+perl -pl.bak -le 's/\r$//;' example.cgi
+
