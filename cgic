@@ -1,0 +1,15 @@
+#include "cgi.h'
+int cgiMain() {
+  char name[100];
+
+  cgiHeaderContentType("text/html");
+
+  cgiFormStringNoNewlines("name", name, 100);
+  fprintf(cgiOut, "Name: ");
+  cgiHtmlEscape(name);
+  fprintf(cgiOut, "\n");
+
+  return 0;
+}
+
+
