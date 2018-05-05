@@ -220,3 +220,11 @@ chmod a+x /usr/local/apache/cgi-bin/example.cgi
 which perl
 perl -pl.bak -le 's/\r$//;' example.cgi
 
+chmod a+x foo.html
+chomd a-x foo.html
+
+
+//
+
+
+
