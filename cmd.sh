@@ -230,5 +230,15 @@ perl -MCPAN -e 'install Apache::Perldoc'
 perl -le 'print join "\n", @INC;'
 
 
+find /www/htdocs -type f -print \
+	| sed 's/.*/mmapfile &/' > /www/conf/mmap.conf
+
+Include /www/conf/mmap.conf
+
+//
+host www.example.com
+host www.example.com
+
+
 
 
