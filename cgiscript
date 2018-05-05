@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+print "Content-type: text/plain\n\n";
+print "It's working.\n";
+
+#!/bin/sh
+echo Content-type: text/plain
+echo
+echo It\'s working.
+
+@echo off
+echo Content-type: text/plain
+echo.
+echo It's working.
+
+
