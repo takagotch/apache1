@@ -225,6 +225,10 @@ chomd a-x foo.html
 
 
 //
+perl -MCPAN -e 'install Apache::Perldoc'
+
+perl -le 'print join "\n", @INC;'
+
 
 
 
