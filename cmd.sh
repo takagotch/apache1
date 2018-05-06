@@ -278,6 +278,8 @@ chkconfig --levels 35 httpd on
 
 ./configure --help
 
+rpm -ql httpd
+
 
 
 
