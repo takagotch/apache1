@@ -265,4 +265,17 @@ make install
 rpm -ev apache
 
 
+cd /usr/local/build
+tar xvf /tmp/httpd-2.0.59.tat.gz
+cd httpd-2.0.59
+../httpd-2.0.17/config.nice
+make
+
+cp path/to/apachectl /etc/rc.d/init.d/httpd
+vi /etc/rc.d/init.d/httpd
+chkconfig --add httpd
+chkconfig --levels 35 httpd on
+
+
+
 
