@@ -276,6 +276,8 @@ vi /etc/rc.d/init.d/httpd
 chkconfig --add httpd
 chkconfig --levels 35 httpd on
 
+./configure --help
+
 
 
 
