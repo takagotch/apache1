@@ -240,5 +240,29 @@ host www.example.com
 host www.example.com
 
 
+up2date -ui apache apache-devel apache-manual
+up2date -ui httpd httpd-devel httpd-manual
+rpm -Uvh apache
+
+apt-get install apache2-mpm-prefork
+a2enmod rewrite
+
+tar xzvf httpd-2.2.8.tar.gz
+gunzip -c < httpd-2.2.8.tar.gz | tar xvf -
+svn checkout http://svn.apache.org/repos/asf/httpd/httpd/branches/2.2.x/ httpd-2.2
+svn checkout http://svn.apache.org/repos/asf/httpd/httpd/tags/2.2.8/ httpd-2.2.8
+svn ls http://svn.apache.org/repos/asf/httpd/httpd/tags/
+svn update
+
+./buildconf
+./configure --prefix=/usr/local/apache \
+	--with-layout=Apache --enable-modules=most --enable-mods-shared=all \
+	--with-mpm=prefork
+make
+make install
+./configure --help
+
+rpm -ev apache
+
 
 
